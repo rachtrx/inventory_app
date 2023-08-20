@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./services/web
+    command: python manage.py run -h 0.0.0.0
+    depends_on: 
+      - db
+    env_file:
+    - ./.env.dev
+    volumes:
+      - ./services/web/:/usr/src/app/
+    ports:
+      - 5001:5000
+    networks: 
+      - default
+  db:
+    ports: 
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=test
+    image: postgres:14
+    networks: 
+      - default
+    restart: always
+volumes:
+  postgres_data:

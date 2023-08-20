@@ -1,0 +1,31 @@
+.login__form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.alert {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    position: relative;
+    padding: 1rem;
+
+    &--success {
+        background-color: lightgreen;
+        color: darkgreen;
+    }
+    
+    &--info, &--message {
+        background-color: lightblue;
+        color: darkblue;
+    }
+    
+    &--warning {
+        background-color: lightyellow;
+        color: darkorange;
+    }
+    
+    &--danger {
+        background-color: lightcoral;
+        color: darkred;
+    }
+}

@@ -1,0 +1,54 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetFormController.js') }}"></script>
+{% endblock %} {% block main %}
+
+<div class="remove-user" id="remove-user-id">
+    <h1 class="heading-1">Remove a user</h1>
+    <div class="remove-user__form">
+        <form action="/asset/forms/remove_user" class="form form--remove-user" , method="post">
+            {# group for name #}
+            <div class="form__group--user-name">
+                <input type="text" class="form__input form__input--user-name" name="user_name" placeholder="Name" autocomplete="off" />
+                <div class="form-dropdown form-dropdown--user-name hidden-visibility">
+                    <div class="preview preview--user-name"></div>
+                </div>
+            </div>
+
+            {# USE EXCEL #}
+            <div class="form__group--use-excel form__group--use-excel--remove-user">
+                <!-- <input name="use_excel" type="number" class="form__input form__input--excel" placeholder="Number of Devices" id="register-device-devices" min="1" autocomplete="off" />
+                <label for="use_excel" class="form__label form__label--use-excel">Number of Devices</label> -->
+                <button class="btn btn--excel" id="remove-user-excel-btn">Use Excel</button>
+            </div>
+
+            {# USE NORMAL #}
+            <div class="form__group--use-normal form__group--use-normal--remove-user hidden">
+                <button class="btn btn--normal" id="remove-user-normal-btn">Use Normal</button>
+            </div>
+
+            <div class="form__group--remarks-new form__group--remarks-new--remove-user">
+                <input name="remarks" class="form__input form__input--remarks-new" placeholder="Remarks" type="text" autocomplete="off" />
+                <label for="remarks" class="form__label form__label--remarks-new">Remarks</label>
+            </div>
+
+            {# EXCEL #}
+            <div class="form__group--excel form__group--excel--remove-user hidden">
+                <button class="btn btn--file-template">Get Template</button>
+                <input type="file" id="excel-file" class="file__input hidden" accept=".xlsx, .xls"'>
+                <button class="btn btn--file-upload">Upload File</button>
+                <div class="form__file-view hidden">
+                    <span class="form__file--view__file"></span>
+                    <svg class="btn--remove-file">
+                        <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-circle-with-cross"></use>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="form__group--submit form__group--submit--remove-user">
+                <button class="btn btn--submit btn--remove-user">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

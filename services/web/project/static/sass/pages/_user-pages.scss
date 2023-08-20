@@ -1,0 +1,59 @@
+// PROFILES
+.users {
+    display: grid;
+    grid-template-rows: repeat(2, min-content);
+    grid-row-gap: 3rem;
+}
+
+
+.users-header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.users-filter {
+    padding: 2rem;
+    align-items: center;
+    background-color: rgba($color-primary-2, 0.6);
+    border-radius: 5px;
+    margin-top: 2rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    justify-items: stretch;
+
+    &__title {
+        color: $color-primary-2;
+    }
+
+    &__count {
+        color: $color-grey-dark-1;
+    }
+}
+
+.users-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, min-content));
+    grid-gap: 3rem;
+    width: 100%;
+    justify-content: center;
+}
+
+// CREATE PROFILE
+.create-user {
+    
+    &__form {
+        width: 80vw;
+        margin: 0 auto;
+    }
+}
+
+.remove-user {
+    
+    &__form {
+        width: 80vw;
+        margin: 0 auto;
+    }
+}
+

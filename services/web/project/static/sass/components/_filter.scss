@@ -1,0 +1,75 @@
+[class^='filter__group'] {
+    
+}
+
+.filter__group {
+
+
+    &--device-type {
+
+    }
+
+    &--model-name {
+        position: relative;
+    }
+
+    &--vendor {
+
+    }
+
+    &--status {
+
+    }
+
+    &--location {
+
+    }
+
+    &--age {
+
+    }
+
+    &--search {
+        
+    }
+
+    &--btns {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        &--devices {
+            grid-row: 3 / 4;
+            grid-column: 3 / 4;
+        }
+        &--users, &--history {
+            grid-row: 2 / 3;
+            grid-column: 3 / 4;
+        }
+    }
+}
+
+// DROPDOWN FOR INPUTS
+.filter-dropdown {
+    padding-bottom: 1rem;
+    position: absolute;
+    top: 100%;
+    background-color: $color-white;  
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+    max-height: 20rem;
+}
+
+
+.devices-filter-options {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+
+}

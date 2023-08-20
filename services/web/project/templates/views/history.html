@@ -1,0 +1,121 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetShowController.js') }}"></script>
+{% endblock %} {% block main %}
+
+<div class="history">
+    <div class="history-header-container">
+        <h1 class="heading-1">History</h1>
+        <button class="btn btn--export-excel--history">Export to Excel</button>
+    </div>
+    {# show common models #}
+    <div class="history__overview">
+        <div class="history-event">
+            <span class="history-event__datetime"></span>
+            <p class="history-event__description"></p>
+        </div>
+
+        <div class="history-event">
+            <span class="history-event__datetime"></span>
+            <p class="history-event__description"></p>
+        </div>
+
+        <div class="history-event">
+            <span class="history-event__datetime"></span>
+            <p class="history-event__description"></p>
+        </div>
+
+        <div class="history-event">
+            <span class="history-event__datetime"></span>
+            <p class="history-event__description"></p>
+        </div>
+    </div>
+
+    <!-- SECTION Form -->
+    <form class="history-filter">
+        <div class="filter__group--device-type">
+            <h5 class="filter-header filter-header--device-type">Device Type</h5>
+            <select name="deviceType" class="form__input form__input--device-type">
+                <option selected>All</option>
+
+                {% for device_type in device_types %}
+                <option value="{{ device_type }}">{{ device_type }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="filter__group--model-name">
+            <h5 class="filter-header filter-header--model-name">Model Name</h5>
+            <input type="text" class="form__input form__input--model-name" name="modelName" placeholder="All" autocomplete="off" />
+            {# DROPDOWN SUGGESTIONS ABSOLUTE POSITIONING#}
+            <div class="form-dropdown form-dropdown--model-name filter-dropdown hidden-visibility">
+                <div class="preview preview--model-name"></div>
+            </div>
+        </div>
+
+        <div class="filter__group--event-type">
+            <h5 class="filter-header filter-header--event-type">Event Type</h5>
+            <select name="eventType" class="form__input form__input--event-type">
+                <option selected>All</option>
+                <option value="registered">Registered</option>
+                <option value="loaned">Loaned</option>
+                <option value="returned">Returned</option>
+                <option value="condemned">Condemned</option>
+                <option value="created">Created</option>
+                <option value="removed">Removed</option>
+            </select>
+        </div>
+
+        <div class="filter__group--search">
+            <h5 class="filter-header filter-header--search">Username</h5>
+            <input type="text" name="userName" class="form__input form__input--search" autocomplete="off" placeholder="All" />
+        </div>
+
+        <div class="filter__group--search">
+            <h5 class="filter-header filter-header--search">Serial Number / Asset Tag</h5>
+            <input type="text" name="id" class="form__input form__input--search" autocomplete="off" placeholder="All" />
+        </div>
+
+        <div class="filter__group--btns filter__group--btns--history">
+            <button type="reset" class="btn btn-filter btn-filter--reset btn-filter--reset--history">Reset</button>
+            <button type="submit" class="btn btn-filter btn-filter--submit btn-filter--submit--history">Search</button>
+        </div>
+    </form>
+
+    {# device table #}
+    <table class="table table--history">
+        <div class="history-table-title">
+            <h3 class="table__title">Recent Records</h3>
+            <h5 class="history-filter__count">100</h5>
+        </div>
+        <thead>
+            <tr class="table-header">
+                <th class="table-header--asset_tag">Asset Tag</th>
+                <th class="table-header--serial_number">Serial Number</th>
+                <th class="table-header--device_type">Device Type</th>
+                <th class="table-header--model_name">Model Name</th>
+                <th class="table-header--event_type">Event</th>
+                <th class="table-header--person_name">User</th>
+                <th class="table-header--event_date">Datetime</th>
+            </tr>
+        </thead>
+
+        <tbody class="table-body"></tbody>
+    </table>
+
+    <div class="pagination">
+        <!-- <button class="btn--inline pagination__btn--prev">
+          <svg class="search__icon">
+            <use href="src/img/icons.svg#icon-arrow-left"></use>
+          </svg>
+          <span>Page 1</span>
+        </button>
+        <button class="btn--inline pagination__btn--next">
+          <span>Page 3</span>
+          <svg class="search__icon">
+            <use href="src/img/icons.svg#icon-arrow-right"></use>
+          </svg>
+        </button> -->
+    </div>
+
+    {% endblock %}
+</div>

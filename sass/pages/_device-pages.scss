@@ -1,0 +1,115 @@
+// HOMEPAGE
+.devices {
+    display: flex;
+    flex-direction: column;
+}
+
+.devices-overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    width: 100%;
+    align-items: end;
+}
+
+.stats {
+
+    &--doughnut {
+        width: 25vw;
+        padding: 2rem;
+        margin: 0 auto;
+    }
+
+    &--models, &--budget {
+        grid-column: 1 / 4;
+        width: 70vw;
+        padding-left: 5rem;
+    }
+}
+
+[class^='stats-body'] {
+    display: grid;
+}
+
+
+
+.devices-header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+// FILTER FORM
+.devices-filter {
+
+    padding: 2rem;
+    align-items: center;
+    background-color: rgba($color-primary-2, 0.6);
+    border-radius: 5px;
+    margin-top: 2rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 2rem;
+    justify-items: stretch;
+
+    &__count {
+        color: $color-grey-dark-1;
+    }
+}
+
+
+.devices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, min-content));
+    grid-gap: 3rem;
+    width: 100%;
+    justify-content: center;
+}
+
+// CREATE DEVICE
+.register-model {
+
+    &__form {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+// REGISTER DEVICE
+.register-device {
+
+    position: relative;
+
+    &__form {
+        width: 80vw;
+        margin: 0 auto;
+    }
+}
+
+// LOAN DEVICE
+.loan-device {
+
+    &__form {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+// RETURN DEVICE
+.returned-device {
+    
+    &__form {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+// CONDEMN DEVICE
+.condemned-device {
+
+    &__form {
+        width: 80vw;
+        margin: 0 auto;
+    }
+}

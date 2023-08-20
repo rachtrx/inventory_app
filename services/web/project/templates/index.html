@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet" />
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+        <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/gos-badge.png') }}" />
+        {% block links %}{% endblock %} {% block scripts %}{% endblock %}
+        <title>GOS &mdash; INVENTORY</title>
+    </head>
+
+    <body>
+        <div class="container">
+            {% if 'user_id' in session %}
+            <header class="header">
+                <img src="{{ url_for('static', filename='img/gos-badge.png') }}" alt="GOS School Image" class="logo" />
+
+                <nav class="user-nav">
+                    <div class="user-nav__home">
+                        <a class="user-nav__home-dropdown" id="devices-button" href="/asset/">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-home"></use>
+                            </svg>
+                            <span class="user-nav__text">Home</span>
+                        </a>
+                    </div>
+
+                    <div class="user-nav__history">
+                        <a class="user-nav__history-dropdown" id="devices-button" href="/asset/views/history">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-back-in-time"></use>
+                            </svg>
+                            <span class="user-nav__text">History</span>
+                        </a>
+                    </div>
+
+                    <div class="user-nav__devices">
+                        <a class="user-nav__devices-dropdown" id="devices-button" href="/asset/views/devices">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-laptop"></use>
+                            </svg>
+                            <span class="user-nav__text">Devices</span>
+                        </a>
+                        <div class="user-nav__devices-dropdown-menu">
+                            <a href="/asset/forms/register_model" class="user-nav__link">Register Model</a>
+                            <a href="/asset/forms/register_device" class="user-nav__link">Register Device</a>
+                            <a href="/asset/forms/loan_device" class="user-nav__link">Loan Device</a>
+                            <a href="/asset/forms/returned_device" class="user-nav__link">Return Device</a>
+                            <a href="/asset/forms/condemned_device" class="user-nav__link">Condemn Device</a>
+                            <a href="/asset/views/devices" class="user-nav__link user-nav__link--home">Show All Devices</a>
+                        </div>
+                    </div>
+
+                    <div class="user-nav__users">
+                        <a class="user-nav__users-dropdown" id="users-button" href="/asset/views/users">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-user"></use>
+                            </svg>
+                            <span class="user-nav__text">Users</span>
+                        </a>
+                        <div class="user-nav__users-dropdown-menu">
+                            <a href="/asset/forms/create_user" class="user-nav__link">Create User</a>
+                            <a href="/asset/forms/remove_user" class="user-nav__link">Remove User</a>
+                            <a href="/asset/views/users" class="user-nav__link">Show All Users</a>
+                        </div>
+                    </div>
+
+                    <div class="user-nav__settings">
+                        <div class="user-nav__settings-dropdown">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-cog"></use>
+                            </svg>
+                            <span class="user-nav__text">Settings</span>
+                        </div>
+                        <div class="user-nav__settings-dropdown-menu">
+                            <a href="/auth/logout" class="user-nav__link">Logout</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            {% endif %}
+            <main class="content">{% block main %}{% endblock %}</main>
+
+            <!-- RENDER ERROR -->
+            <div class="overlay hidden-visibility">
+                <div class="window hidden-visibility"></div>
+            </div>
+
+            <footer class="footer">
+                <div class="footer__text">Created by Rachmiel, 2023</div>
+            </footer>
+        </div>
+    </body>
+</html>

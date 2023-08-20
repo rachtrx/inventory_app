@@ -1,0 +1,377 @@
+[class^='form__group'] {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.form {
+
+    padding: 2rem;
+    display: grid;
+    width: 100%;
+    align-items: start;
+    margin: 0 auto;
+
+    &--register-model {
+        grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    &--register-device {
+
+        grid-template-rows: repeat(2, min-content);
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &--condemned-device, &--remove-user {
+        grid-template-rows: repeat(2, min-content);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &--create-user {
+        grid-template-rows: repeat(2, min-content);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &--load-device {
+        grid-template-rows: repeat(4, min-content);
+    }
+
+    &__group {
+        
+        // register-model, create-user
+        &--device-type, &--device-type-new, &--dept, &--dept-new {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            // register-model
+            &-new {
+
+            }
+        }
+
+        &--user-name {
+
+            &--returned-device {
+                padding: 0;
+            }
+        }
+
+        &--model-name {
+
+            &--register-device {
+                grid-row: 1 / 2;
+                grid-column: 1 / 3;
+            }
+
+            // register-model
+            &-new {
+
+            }
+
+            
+        }
+
+        &--model-value {
+
+            // register-model
+            &-new {
+                grid-column: 1 / 2;
+                grid-row: 3 / 4;
+            }
+        }
+
+        &--serial-number {
+
+            // register-device
+            &-new {
+                grid-row: 2 / 3;
+                grid-column: 1 / 2;
+            }
+        }
+
+        &--asset-tag {
+
+            grid-row: 1 / 2;
+            grid-column: 1 / 2;
+
+            // register-device
+            &-new {
+                grid-row: 2 / 3;
+                grid-column: 2 / 3;
+            }
+        }
+
+        &--submit {
+
+            &--register-device {
+                grid-row: 3 / 4;
+                grid-column: 3 / 4;
+            }
+
+            &--condemned-device {
+                grid-row: 2 / 3;
+                grid-column: 2 / 3;
+            }
+
+            &--create-user {
+                grid-column: 1 / 3;
+            }
+
+            &--preview {
+                grid-row: 4 / 5;
+                grid-column: 1 / 4;
+            }
+
+            &--onboard {
+                grid-row: 3 / 4;
+                grid-column: 1 / 3;
+            }
+        }
+
+        &--excel {
+            background-color: rgba($color-primary-2, 0.2);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-bottom: 2rem;
+
+            &--register-device {
+                grid-row: 2 / 3;
+                grid-column: 1 / 4;
+            }
+
+            &--condemned-device {
+                grid-row: 1 / 2;
+                grid-column: 1 / 3;
+            }
+
+            &--create-user {
+                grid-row: 2 / 3;
+                grid-column: 1 / 3;
+            }
+
+            &--remove-user {
+                grid-row: 1 / 2;
+                grid-column: 1 / 3;
+            }
+
+            &--onboarding {
+                grid-template-rows: repeat(3, 1fr);
+            }
+        }
+
+        &--use-excel, &--use-normal {
+
+            &--register-device {
+                grid-row: 3 / 4;
+                grid-column: 2 / 3;
+            }
+
+            &--condemned-device {
+                grid-row: 2 / 3;
+                grid-column: 1 / 2;
+            }
+
+            &--create-user {
+                grid-row: 1 / 2;
+                grid-column: 2 / 3;
+            }
+
+            &--remove-user {
+                grid-row: 2 / 3;
+                grid-column: 1 / 2;
+            }
+        }
+
+        &--remarks-new {
+
+            &--condemned-device {
+                grid-row: 1 / 2;
+                grid-column: 2 / 3;
+            }
+        }
+
+        &--vendor {
+
+        }
+    }
+
+    // HIDE LABEL WHEN PLACEHOLDER SHOWN
+    &__input:placeholder-shown + &__label {
+        opacity: 0;
+        // element is still on the page so we hide it. However, we needed to use opacity as we cant animate visibility
+        visibility: hidden;
+        transform: translateY(4rem);
+    }
+    
+    // INPUTS
+    &__input {
+
+        border: none;
+        font-family: inherit;
+        display: block;
+        width: 100%;
+        font-size: $default-font-size;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        transition: all 0.3s;
+        position: relative;
+
+        &:focus {
+            box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+            outline: none;
+        }
+
+        &:focus &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background-color: $color-primary-2;
+        }
+
+        &:focus:invalid &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+            background-color: $color-red-2;
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-black;
+        }
+
+        // register-model
+        &--device-type {
+
+            option {
+                color: inherit;
+            }
+            
+            // options from select tag (for present devices)
+            & > * {
+                font-size: $default-font-size;
+
+                &:checked {
+                    background-color: rgba($color-primary-2, 0.2);
+                }
+            }
+
+            &-new {
+
+            }
+        }
+        
+        // register-device
+        &--model-name {
+
+            // register-model
+            &-new {
+
+            }
+        }
+
+        &--remarks {
+
+            
+            &-new {
+                font-size: $default-font-size;
+            }
+        }
+    }
+
+    // LABELS OF INPUTS
+    &__label {
+
+        font-size: $small-font-size;
+        transition: all 0.3s;
+        align-self: flex-start;
+
+        &--device-type
+        {
+            
+            &-new {
+
+            }
+        }
+
+        &--model-name {
+
+            &-new {
+
+            }
+        }
+
+        &--use-excel {
+            font-size: $small-font-size;
+        }
+
+        &--dept, &--device-type {
+            visibility: hidden;
+        }
+    }
+
+    &__file-view {
+        background-color: $color-data-yellow;
+        border-radius: 8px;
+        display: grid;
+        grid-template-columns: max-content min-content;
+        align-content: center;
+        justify-content: center;
+        justify-self: center;
+        align-self: center;
+        padding: 0.5rem;
+        align-items: center;
+        grid-gap: 1rem;
+    }
+
+    &__file--view__file {
+        font-size: $small-font-size;
+    }
+}
+
+// DROPDOWN FOR INPUTS
+.form-dropdown {
+    padding-bottom: 1rem;
+    position: absolute;
+    top: calc(100% - 2rem);
+    background-color: $color-white;  
+    width: calc(100% - 2 * (2rem));
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+    max-height: 20rem;
+}
+
+.spinner {
+    margin: 5rem auto;
+    text-align: center;
+  
+    svg {
+      height: 6rem;
+      width: 6rem;
+      fill: $color-primary-2;
+      animation: rotate 2s infinite linear;
+    }
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }

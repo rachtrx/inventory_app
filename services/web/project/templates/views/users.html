@@ -1,0 +1,60 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetShowController.js') }}"></script>
+{% endblock %} {% block main %}
+
+<div class="users">
+    <div class="users-header-container">
+        <h1 class="heading-1">Users</h1>
+        <button class="btn btn--export-excel--users">Export to Excel</button>
+    </div>
+
+    <form class="users-filter">
+        <div class="filter__group--dept-name">
+            <h5 class="filter-header filter-header--dept-name">Department</h5>
+            <select name="deptName" class="form__input form__input--dept-name" required>
+                <option selected>All</option>
+
+                {% for dept in depts %}
+                <option value="{{ dept }}">{{ dept }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="filter__group--device-count">
+            <h5 class="filter-header filter-header--device-count">No. of devices</h5>
+            <select name="deviceCount" class="form__input form__input--device-count" required></select>
+        </div>
+
+        <div class="filter__group--search">
+            <h5 class="filter-header filter-header--search">Username</h5>
+            <input type="text" name="userName" class="form__input form__input--search" autocomplete="off" placeholder="All" />
+        </div>
+
+        <div class="filter__group--btns filter__group--btns--users">
+            <button type="reset" class="btn btn-filter btn-filter--reset btn-filter--reset--users">Reset</button>
+            <button type="submit" class="btn btn-filter btn-filter--submit btn-filter--submit--users">Search</button>
+        </div>
+    </form>
+
+    <div class="devices-filter-options">
+        <button class="btn-filter btn-filter--bookmarks"></button>
+        <h5 class="users-filter__count">100</h5>
+    </div>
+
+    <div class="users-grid"></div>
+    <div class="pagination">
+        <!-- <button class="btn--inline pagination__btn--prev">
+        <svg class="search__icon">
+          <use href="src/img/icons.svg#icon-arrow-left"></use>
+        </svg>
+        <span>Page 1</span>
+      </button>
+      <button class="btn--inline pagination__btn--next">
+        <span>Page 3</span>
+        <svg class="search__icon">
+          <use href="src/img/icons.svg#icon-arrow-right"></use>
+        </svg>
+      </button> -->
+    </div>
+</div>
+{% endblock %}

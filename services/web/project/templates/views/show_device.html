@@ -1,0 +1,63 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetShowController.js') }}"></script>
+{% endblock %} {% block main %}
+
+<div class="popstate">
+    <a class="btn btn--previous" href="/asset/views/devices">&larr; Back to devices</a>
+</div>
+
+<div class="show-device">
+    <!-- <div class="show-device-overview">
+        <div class="show-device-details">
+            <h1 class="show-device-details__asset-tag">GOS/EQ/2301ADL086</h1>
+            <h2 class="show-device-details__model-name">ASUS P1412</h2>
+            <h4 class="show-device-details__device-type">Computer</h4>
+        </div>
+
+        <div class="show-device-users--past">
+            <h2 class="show-device-user-title">Past Users</h2>
+            <hr />
+            <h4 class="show-device-user__name">Rachmiel</h4>
+            <h4 class="show-device-user__name">Izzan</h4>
+        </div>
+
+        <div class="show-device-users--current">
+            <h2 class="show-device-user-title">Status</h2>
+            <hr />
+            <div class="show-device-user__status">ON LOAN</div>
+            <h4 class="show-device-user__name">Izzan</h4>
+            <button class="btn btn--return" dataset="32839">Return Device</button>
+        </div>
+        <div class="show-device-actions">
+            <button class="btn btn--condemn">Condemn</button>
+            <button class="btn btn--loan">Loan</button>
+        </div>
+    </div>
+
+    <div class="timeline--show-device">
+        <div class="timeline__component">
+            <div class="timeline__date timeline__date--right">15 june 2023</div>
+        </div>
+        <div class="timeline__middle">
+            <div class="timeline__point"></div>
+        </div>
+        <div class="timeline__component timeline__component--bg">
+            <h3 class="timeline__title">Laptop returned on 22 July 2023</h3>
+            <p class="timeline__paragraph">Laptop was in good condition</p>
+            <a class="btn btn--timeline__delete">Delete</a>
+        </div>
+
+        <div class="timeline__component timeline__component--bg">
+            <h3 class="timeline__title">Laptop returned on 22 July 2023</h3>
+            <p class="timeline__paragraph">Laptop was in good condition</p>
+        </div>
+        <div class="timeline__middle">
+            <div class="timeline__point timeline__point--bottom"></div>
+        </div>
+        <div class="timeline__component">
+            <div class="timeline__date">15 june 2023</div>
+        </div>
+    </div> -->
+</div>
+
+{% endblock %}

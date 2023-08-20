@@ -1,0 +1,43 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetFormController.js') }}"></script>
+{% endblock %} {% block main %}
+<div class="register-model">
+    <h1 class="heading-1">Register a Model</h1>
+    <div class="register-model__form">
+        <form class="form form--register-model">
+            {# group for selecting existing device, deactivate if new device type selected #}
+            <div class="form__group--device-type">
+                <select name="device_type" class="form__input form__input--device-type" required>
+                    <option disabled selected hidden>Device Type</option>
+
+                    {% for device_type in device_types %}
+                    <option value="{{ device_type }}">{{ device_type }}</option>
+                    {% endfor %}
+                </select>
+                <div class="device-type-new-btn">
+                    <a class="btn-text btn-text--device-type-new">Device not found? Create New Device Type</a>
+                </div>
+            </div>
+
+            {# group for creating new device that will be added to the array, need javascript #}
+            <div class="form__group--device-type-new hidden">
+                <input autocomplete="off" name="new_device_type" class="form__input form__input--device-type-new" placeholder="New Device Type" type="text" autocomplete="off" />
+                <label for="new_device_type" class="form__label form__label--device-type-new">New Device Type</label>
+                <div class="device-type-existing-btn">
+                    <a class="btn-text btn-text--device-type">Create with existing device</a>
+                </div>
+            </div>
+
+            {# model name #}
+            <div class="form__group--model-name-new">
+                <input name="model_name" class="form__input form__input--model-name-new" placeholder="Model Name" type="text" autocomplete="off" />
+                <label for="model_name" class="form__label form__label--model-name-new">New Model Name</label>
+            </div>
+
+            <div class="form__group--submit form__group--submit--register-model">
+                <button class="btn btn--submit btn--register-model">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

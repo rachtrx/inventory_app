@@ -1,0 +1,36 @@
+.form-onboard-header {
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+}
+
+.form--onboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, min-content);
+    grid-gap: 1rem;
+    max-height: 100%;
+    min-height: 0px;
+    margin: 0 auto;
+    width: 50%;
+
+    ul {
+        grid-column: 1 / 4;
+        grid-row: 2 / 3;
+
+        li span {
+            color: $color-data-pink;
+        }
+    }
+}
+
+.onboard-data {
+    font-size: $onboard-font-size;
+
+    &-new {
+        color: $color-data-pink
+    }
+
+    &-new-parent {
+        color: $color-data-blue
+    }
+}

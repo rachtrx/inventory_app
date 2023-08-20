@@ -1,0 +1,32 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetFormController.js') }}"></script>
+{% endblock %} {% block main %}
+<div class="devices-onboard">
+    <h1 class="heading-1">Onboard</h1>
+    <form class="form--onboard">
+        <h2 class="form-onboard-header">Instructions</h2>
+        <ul>
+            <li><span>Compulsory</span> Fields: Device Type, Model Name, Vendor Name, Serial Number, Asset Tag, Registered Date</li>
+            <li><span>Immutable</span> Fields upon completion: All Fields except Model Value, Registered Remarks, Location, Bookmarked and Loan Remarks</li>
+            <li>Date must be in <span>DD/MM/YYYY</span> format</li>
+            <li>Device Bookmarks are indicated by a <span>'1'</span></li>
+            <li>Device Types will group models together. Examples include Laptops, iPads</li>
+            <li>Mutable fields can only be added <span>individually</span> upon submission</li>
+            <li><span>Users</span> can be registered by indicating a loan. In this case, User Name, Dept Name and Loaned Date are <span>compulsory</span></li>
+        </ul>
+        <button class="btn btn--file-template btn--file-template--onboard">Get Template</button>
+        <input type="file" id="excel-file" class="file__input hidden" accept=".xlsx, .xls"'>
+        <button class="btn btn--file-upload btn--file-upload--onboard">Upload File</button>
+        <div class="form__file-view hidden">
+            <span class="form__file--view__file"></span>
+            <svg class="btn--remove-file">
+                <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-circle-with-cross"></use>
+            </svg>
+        </div>
+        <div class="form__group--submit--preview">
+            <button class="btn btn--preview">Preview</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetShowController.js') }}"></script>
+{% endblock %} {% block main %}
+
+<div class="devices-dashboard">
+    <div class="devices-header-container">
+        <h1 class="heading-1">Dashboard</h1>
+    </div>
+
+    {# show common models #}
+    <div class="devices-overview">
+        {# {% for device_model in device_models %} {% endfor %} #} {# Popular devices #}
+        <div class="stats stats--doughnut">
+            <div class="stats-body--devices">
+                <h2>Top devices By Count</h2>
+                <hr />
+                <canvas id="popularDevicesCount"></canvas>
+            </div>
+        </div>
+
+        <div class="stats stats--doughnut">
+            <div class="stats-body--devices">
+                <h2>Top devices By Value</h2>
+                <hr />
+                <canvas id="popularDevicesValue"></canvas>
+            </div>
+        </div>
+
+        {# Device Lifespan #}
+        <div class="stats stats--doughnut">
+            <div class="stats-body--devices">
+                <h2>Device Age</h2>
+                <hr />
+                <canvas id="devicesAge"></canvas>
+            </div>
+        </div>
+
+        {# Status of active devices #}
+        <div class="stats stats--doughnut">
+            <div class="stats-body--devices">
+                <h2>Status of enrolled devices</h2>
+                <hr />
+                <canvas id="devicesStatus"></canvas>
+            </div>
+        </div>
+
+        <div class="stats stats--doughnut">
+            <div class="stats-body--users">
+                <h2>Users by Departments</h2>
+                <hr />
+                <canvas id="users"></canvas>
+            </div>
+        </div>
+
+        <div class="stats stats--doughnut">
+            <div class="stats-body--users-loan">
+                <h2>Loaned Devices by Departments</h2>
+                <hr />
+                <canvas id="usersLoan"></canvas>
+            </div>
+        </div>
+
+        {# Popular Models #}
+        <div class="stats stats--models">
+            <div class="stats-body--devices">
+                <h2>Popular Models by Count</h2>
+                <hr />
+                <canvas id="popularModelsCount"></canvas>
+            </div>
+        </div>
+
+        {# Popular Models #}
+        <div class="stats stats--models">
+            <div class="stats-body--devices">
+                <h2>Popular Models by Value</h2>
+                <hr />
+                <canvas id="popularModelsValue"></canvas>
+            </div>
+        </div>
+
+        <div class="stats stats--budget">
+            <div class="stats-body--budget">
+                <h2>Inventory Expenditure</h2>
+                <hr />
+                <canvas id="budget"></canvas>
+            </div>
+        </div>
+    </div>
+    <form class="form form--onboard" method="post"></form>
+</div>
+{% endblock %}

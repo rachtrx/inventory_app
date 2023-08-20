@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 1 rem = 10px
+
+    // @media only screen and (max-width: $bp-large) {
+    //     font-size: 50%; //8px
+    // }
+}
+
+// if open sans does not work, use sans serif
+body {
+    font-size: $default-font-size;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    // this is the way to call CSS cutom properties
+    color: $color-grey-dark-3;
+    background-color: $color-primary-1;
+    background-size: cover;
+    // the default is for CSS to repeat the background image if the body is too small
+    background-repeat: no-repeat;
+}
+
+.heading-1 {
+    font-size: 4rem;
+    color: $color-primary-2;
+}
+
+.heading-2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
