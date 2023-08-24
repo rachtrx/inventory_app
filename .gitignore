@@ -20,7 +20,7 @@ yarn.lock
 .env.prod.db
 
 # Ignore dist files, and uploads folder
-services/web/project/static/js/dist
+# services/web/project/static/js/dist
 services/web/project/uploads
 services/web/project/inventory.db
 
