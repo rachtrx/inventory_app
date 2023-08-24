@@ -3,6 +3,7 @@ from flask import Flask, redirect, url_for, send_from_directory, session
 from project.extensions import db, migrate, bcrypt, login_manager
 from datetime import timedelta
 
+
 def create_app():
 
     from .config import Config

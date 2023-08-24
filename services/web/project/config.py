@@ -8,8 +8,8 @@ class Config:
     SECRET_KEY = os.getenv('SECRET_KEY')
 
     # Database
-    if not os.getenv("DATABASE_URL") == None:
-        SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL") 
+    if not os.getenv("DATABASE_URL") is None:
+        SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
         STATIC_FOLDER = os.path.join(os.getenv("APP_FOLDER"), "project", "static")
         UPLOADS_FOLDER = os.path.join(os.getenv("APP_FOLDER"), "project", "uploads")
     else:

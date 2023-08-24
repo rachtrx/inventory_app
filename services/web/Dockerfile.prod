@@ -58,7 +58,7 @@ COPY ./entrypoint.sh $APP_HOME
 # copy project
 COPY . $APP_HOME
 
-RUN mkdir $APP_HOME/project/uploads
+RUN if [ ! -d $APP_HOME/project/uploads ]; then mkdir $APP_HOME/project/uploads; fi
 
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME
