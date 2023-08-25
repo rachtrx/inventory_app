@@ -1239,7 +1239,7 @@ const oldNewCheck = function(defaultSelect, oldInput, newInput, name) {
     return true;
 };
 const excelToJSDate = function(date) {
-    newDate = new Date(Math.round((date - 25569) * 86400000)).toISOString();
+    newDate = new Date(Math.round((parseInt(date) - 25569) * 86400000)).toISOString();
     return newDate;
 };
 const setFormData = function(formData, key, oldValue = "", newValue = "All") {

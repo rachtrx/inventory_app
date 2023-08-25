@@ -171,7 +171,7 @@ export const oldNewCheck = function(defaultSelect, oldInput, newInput, name) {
 }
 
 export const excelToJSDate = function(date) {
-    newDate = new Date(Math.round((date - 25569)*86400*1000)).toISOString();
+    newDate = new Date(Math.round((parseInt(date) - 25569)*86400*1000)).toISOString();
     return newDate;
 }
 
