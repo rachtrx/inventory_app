@@ -48,7 +48,7 @@ export const controlLoanConfirmation = function() {
 export const controlReturnConfirmation = function() {
     model.state.rawFormInputs = []
     validatePlainData(returnedDevice)
-    model.state.rawFormInputs.unshift(viewObject._eventId) // unshift the event_id to download the form
+    model.state.rawFormInputs.unshift(returnedDevice._eventId) // unshift the event_id to download the form
     returnedDevice.renderPDFForm(model.state.page)
     model.state.object = returnedDevice.getFormDetails()
 }
