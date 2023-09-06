@@ -233,6 +233,7 @@ export const uploadData = async function(data = state.formInputs) {
           break;
 
         case `create user`:
+          console.log(data);
           res = await AJAX(`${ASSET_HOMEPAGE_URL}forms/create_user`, data)
           break;
 

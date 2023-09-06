@@ -20,6 +20,7 @@ const validateExcelData = async function(viewObject) {
     
         // raw form inputs is still needed for PDF forms
         model.state.rawFormInputs = viewObject.getFileData(excelData)
+        console.log(model.state.rawFormInputs);
         if(!model.state.rawFormInputs) throw Error('Data could not be processed');
     } catch(err) {
         throw err;
@@ -122,12 +123,14 @@ export const controlNormalSubmit = async function(viewObject) {
         let data;
 
         if(model.state.excel === true) {
-            validateExcelData(viewObject, data)
+            await validateExcelData(viewObject)
             data = [...model.state.rawFormInputs];
+            console.log(model.state.rawFormInputs);
             if (!data) return;
             data.unshift(true);
+            console.log(data);
         } else {
-            validatePlainData(viewObject, data) 
+            await validatePlainData(viewObject)
             data = [...model.state.rawFormInputs];
             data.unshift(false)
         }

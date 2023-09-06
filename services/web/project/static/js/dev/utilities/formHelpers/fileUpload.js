@@ -49,10 +49,6 @@ export default class FileUpload extends PreviewView {
     addHandlerExcelOption(handler) {
         this._useExcelBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log('excel handler clicked');
-            
-            console.log(this.type);
-
 
             // TOREVIEW clear inputs
             resetInputs(this._resetValuesArray)

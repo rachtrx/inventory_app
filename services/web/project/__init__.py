@@ -39,6 +39,6 @@ def create_app():
     @app.before_request
     def session_handler():
         session.permanent = True
-        app.permanent_session_lifetime = timedelta(minutes=1)
+        app.permanent_session_lifetime = timedelta(minutes=10)
 
     return app

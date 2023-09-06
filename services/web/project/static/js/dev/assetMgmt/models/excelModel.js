@@ -96,27 +96,28 @@ export const readExcel = async function(file) {
     
     const fileReader = new FileReader();
 
-    fileReader.readAsArrayBuffer(file)
-
     const loadData = () => {
-    return new Promise((resolve, reject) => {
-        fileReader.onload = function(e) {
-        console.log(fileReader.result);
-        console.log(e);
-    
-        const data = new Uint8Array(fileReader.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[0];
-        const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { defval: "" });
-        console.log(sheetData);
-        resolve(sheetData);
-        };
-    
-        fileReader.onerror = function(err) {
-        console.log(fileReader.error);
-        reject(err);
-        };
-    });
+
+        fileReader.readAsArrayBuffer(file)
+
+        return new Promise((resolve, reject) => {
+            fileReader.onload = function(e) {
+            console.log(fileReader.result);
+            console.log(e);
+        
+            const data = new Uint8Array(fileReader.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { defval: "" });
+            console.log(sheetData);
+            resolve(sheetData);
+            };
+        
+            fileReader.onerror = function(err) {
+            console.log(fileReader.error);
+            reject(err);
+            };
+        });
     };
     
     try {

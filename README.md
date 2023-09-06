@@ -74,6 +74,9 @@
 - docker-compose -f docker-compose.prod.yml exec web python manage.py remove_db (PROD) 
 - docker-compose -f docker-compose.yml exec web python manage.py remove_db (DEV)
 
+### To remove all docker containers,
+- docker-compose -f docker-compose.prod.yml down 
+
 ### To remove all docker containers, images and volumes,
 - docker-compose -f docker-compose.prod.yml down -v --rmi all
 
