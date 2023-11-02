@@ -42,7 +42,7 @@ export const controlLoanConfirmation = function() {
 
     validatePlainData(loanDevice)
 
-    loanDevice.renderPDFForm(model.state.page) // render pdf page to download/generate
+    loanDevice.renderPDFForm(model.state.page) // render pdf page to download/generate. in fileUpload.js
     model.state.object = loanDevice.getFormDetails() // prepare pdf fields
 }
 
@@ -61,6 +61,11 @@ export const controlPDFSubmit = async function(viewObject, bypass = false) {
 
         if(!model.state.rawFormInputs) {
             viewObject.renderError('Something went wrong!')
+            return;
+        }
+
+        if(bypass === false && model.state.fileLoaded === false) {
+            viewObject.renderError('Form was not uploaded!')
             return;
         }
 

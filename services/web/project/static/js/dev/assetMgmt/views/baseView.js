@@ -2,7 +2,6 @@ import ChartView from './chartView.js';
 import Chart from 'chart.js/auto';
 import { eventToStatus, hideEl, showEl } from '../../utilities/helpers.js';
 import { ASSET_HOMEPAGE_URL } from '../../utilities/config.js';
-import icons from 'url:../../../../sprite.svg'
 import ChartjsPluginScrollBar from 'chartjs-plugin-scroll-bar';
 import DoughnutLabel from "chartjs-plugin-doughnutlabel-v3";
 

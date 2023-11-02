@@ -100,6 +100,8 @@ def generate_all_devices():
 
     result = [dict(row._asdict()) for row in query]
 
+    print(f"all devices: {result}")
+
     return jsonify(result)
 
 

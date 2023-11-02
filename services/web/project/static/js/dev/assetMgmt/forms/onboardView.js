@@ -127,6 +127,9 @@ class OnboardView extends FileUpload {
             }
             // console.log(device.registeredDate);
             deviceObj.registeredDate = excelToJSDate(device.registeredDate)
+            if (deviceObj.registeredDate === null) {
+                throw Error(`${device.assetTag}: Date format is wrong, please ensure it is DD/MM/YYYY`)
+            }
             // console.log(deviceObj.registeredDate);
 
             if (!device.vendorName) {

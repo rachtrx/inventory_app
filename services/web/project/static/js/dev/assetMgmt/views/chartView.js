@@ -191,7 +191,8 @@ export default class ChartView extends View {
         const result = this._groupChartArrRank(deviceArr, modelArr)
 
         console.log(result);
-
+        
+        // TODO ADD TRY EXCEPT?
         return [{
             labels: result[0].map((type) => type.device_type),
             datasets: result.map((innerArr, index) => ({

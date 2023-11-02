@@ -41,8 +41,9 @@ export const createDeviceObject = function(device) {
 // LOAD USERS / CHART CLICKED FILTER
 export const getDevices = async function() {
 try {
-
+    console.log(`${ASSET_HOMEPAGE_URL}api/all_devices`);
     const data = await AJAX(`${ASSET_HOMEPAGE_URL}api/all_devices`)
+    console.log(data)
     if(!data) return
     console.log(data);
     const results = data.map(device => createDeviceObject(device))

@@ -532,18 +532,19 @@ def create_user():
         # if new dept, check if dept already exists
         if dept[0] == '_':
             dept = dept[1:]
-            if db.session.query(exists().where(Dept.id.isnot(None))).scalar():
-                cur_dept = db.session.query(Dept).filter(
-                    func.lower(Dept.dept_name) == dept.lower()).first()
-                if cur_dept:
-                    return jsonify({'error': "Department {} already exists!".format(dept)}), 400
+            cur_dept = db.session.query(Dept).filter(
+                func.lower(Dept.dept_name) == dept.lower()).first()
+            if cur_dept:
+                return jsonify({'error': "Department {} already exists!".format(dept)}), 400
 
-                dept_id = uuid.uuid4().hex
-                new_dept = Dept(id=dept_id, dept_name=dept)
-                db.session.add(new_dept)
+            dept_id = uuid.uuid4().hex
+            new_dept = Dept(id=dept_id, dept_name=dept)
+            db.session.add(new_dept)
         else:
             dept_id = db.session.query(Dept.id).filter(
                 func.lower(Dept.dept_name) == dept.lower()).first()[0]
+
+        print(dept_id)
 
         # else dept = dept
 

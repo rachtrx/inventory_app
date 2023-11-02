@@ -5,6 +5,7 @@ from project.asset.models import Device, Model, User, Event, Vendor
 from sqlalchemy import desc, exists
 
 
+
 @bp.route('/')
 def asset_view():
     results = db.session.query(exists().where(Device.id.isnot(None))).scalar()

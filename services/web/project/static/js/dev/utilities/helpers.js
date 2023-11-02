@@ -1,4 +1,5 @@
 import { TIMEOUT_SEC } from './config.js';
+import moment from 'moment';
 
 const timeout = function (s) {
     return new Promise(function (_, reject) {
@@ -171,9 +172,29 @@ export const oldNewCheck = function(defaultSelect, oldInput, newInput, name) {
 }
 
 export const excelToJSDate = function(date) {
-    newDate = new Date(Math.round((parseInt(date) - 25569)*86400*1000)).toISOString();
-    return newDate;
-}
+  let newDate;
+  // First, try to parse the date as a "DD/MM/YYYY" string
+  const momentDate = moment(date, 'DD/MM/YYYY', true);
+  if (momentDate.isValid()) {
+    newDate = momentDate.toDate();
+    console.log("text date");
+  } else {
+    // If the above fails, try to parse it as an Excel date
+    try {
+      const excelDate = Math.round((parseInt(date) - 25569) * 86400 * 1000);
+      newDate = new Date(excelDate);
+      if (isNaN(newDate.getTime())) {
+        throw new Error('Invalid Excel date');
+      }
+      console.log("excel date");
+    } catch(e) {
+      console.error("Error parsing date:", e);
+      newDate = null;
+    }
+  }
+  console.log(newDate);
+  return newDate;
+};
 
 export const setFormData = function(formData, key, oldValue = '', newValue = 'All') {
   if(formData.get(key) === oldValue)
