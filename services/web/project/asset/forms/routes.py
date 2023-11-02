@@ -267,7 +267,6 @@ def register_device():
                     func.lower(Vendor.vendor_name) == vendor_name.lower()).first()
                 if cur_vendor:
                     return jsonify({'error': "Vendor {} already exists!".format(vendor_name)}), 400
-            else:
                 vendor_id = uuid.uuid4().hex
                 vendor = Vendor(
                     id=vendor_id,

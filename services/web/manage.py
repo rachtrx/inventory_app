@@ -11,6 +11,7 @@ if not os.getenv("DATABASE_URL"):
 
 app = create_app()
 
+
 @app.cli.command("create_db")
 def create_db():
     db.create_all()

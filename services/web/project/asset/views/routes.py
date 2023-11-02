@@ -12,7 +12,6 @@ else:
     device_age_exp = func.floor((func.extract('epoch', func.now() - Device.registered_date) / 31556952))
 
 
-
 @bp.route('/devices')
 @login_required
 def devices_view():
