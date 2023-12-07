@@ -206,7 +206,7 @@ export const uploadData = async function(data = state.formInputs) {
 
     switch(state.page) {
         case `onboard`:
-          console.log(data);
+          // console.log(data);
           res = await AJAX(`${ASSET_HOMEPAGE_URL}forms/onboard`, data)
           break;
 

@@ -100,7 +100,7 @@ def generate_all_devices():
 
     result = [dict(row._asdict()) for row in query]
 
-    print(f"all devices: {result}")
+    # print(f"all devices: {result}")
 
     return jsonify(result)
 
@@ -152,7 +152,7 @@ def check_onboard():
                 if (model,) in model_names:
                     model = db.session.query(Model).filter_by(model_name=model).first()
                     cur_dt = Model.query.get(model.id).device_type.device_type
-                    print(cur_dt)
+                    # print(cur_dt)
                     if dt != cur_dt:
                         return jsonify({"error": "{} is already registered as a {}".format(model, cur_dt)}), 400
                     else:
@@ -353,7 +353,7 @@ def generate_dashboard():
     cost_per_year = [dict(row._asdict()) for row in _cost_per_year]
     total_cost_per_year = [dict(row._asdict()) for row in _total_cost_per_year]
 
-    print(devices_age)
+    # print(devices_age)
 
     return jsonify([top_devices, top_devices_value, top_models, top_models_value, devices_status, devices_age, users, users_loan, cost_per_year, total_cost_per_year])
 

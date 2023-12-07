@@ -69,13 +69,18 @@ export const getFilterDevices = function() {
 
     const newResults = state.allResults.filter((result) => {
         valid = true;
-
         
+        // this callback will filter each result 1 by 1, but it filters asset tag, serial number and model name differently
         valid = compareObjectsFilter(filters, result, 'deviceType', 'vendorName', 'status', 'location', 'deviceAge')
         if(!valid) return valid
 
-        if (filters.id)
-        valid = result.assetTag?.includes(filters.id.toUpperCase()) || result.serialNumber.includes(filters.id.toUpperCase()) 
+        if (filters.id) {
+          console.log("testing regex")
+          // const regexPattern = filters.id.replace('*', '.*').replace(/[-\\^$+.()|[\]{}]/g, '\\$&');
+          const regexPattern = filters.id.replace('*', '.*')
+          const regex = new RegExp(regexPattern, 'i'); // 'i' for case-insensitive
+          valid = regex.test(result.assetTag) || regex.test(result.serialNumber);
+        }
 
         if(!valid) return valid
         
