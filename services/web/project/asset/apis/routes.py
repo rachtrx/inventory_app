@@ -150,7 +150,9 @@ def check_onboard():
         for dt, modelArr in models_obj.items():
             for model in modelArr:
                 if (model,) in model_names:
-                    cur_dt = Model.query.get(model).device_type.device_type
+                    model = db.session.query(Model).filter_by(model_name=model).first()
+                    cur_dt = Model.query.get(model.id).device_type.device_type
+                    print(cur_dt)
                     if dt != cur_dt:
                         return jsonify({"error": "{} is already registered as a {}".format(model, cur_dt)}), 400
                     else:
