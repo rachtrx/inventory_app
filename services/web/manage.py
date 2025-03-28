@@ -4,6 +4,7 @@ from project import create_app, db
 from project.asset.models import Admin
 from flask_bcrypt import generate_password_hash
 from dotenv import load_dotenv
+<<<<<<< HEAD
 import logging
 
 logging.basicConfig(
@@ -17,6 +18,12 @@ logging.basicConfig(
 if not os.getenv("DATABASE_URL"):
     print(True)
     load_dotenv(join(dirname(__file__), ".flask_env"))
+=======
+
+if not os.getenv("DATABASE_URL"):
+    print(True)
+    load_dotenv(join(dirname(__file__), '.flask_env'))
+>>>>>>> origin/main
 
 app = create_app()
 
@@ -35,6 +42,7 @@ def remove_db():
 
 @app.cli.command("seed_db")
 def seed_db():
+<<<<<<< HEAD
     db.session.add(
         Admin(
             email=os.getenv("APP_EMAIL"),
@@ -42,4 +50,9 @@ def seed_db():
             username=os.getenv("APP_USERNAME"),
         )
     )
+=======
+    db.session.add(Admin(email=os.getenv('APP_EMAIL'),
+                         pwd=generate_password_hash(os.getenv('APP_PASSWORD')).decode('utf8'),
+                         username=os.getenv('APP_USERNAME')))
+>>>>>>> origin/main
     db.session.commit()

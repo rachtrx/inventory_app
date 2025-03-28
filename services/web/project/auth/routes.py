@@ -6,8 +6,11 @@ from project.auth import bp
 from project.asset.models import Admin
 from project import login_manager
 from project.auth.forms import login_form
+<<<<<<< HEAD
 from flask_wtf.csrf import generate_csrf
 import logging
+=======
+>>>>>>> origin/main
 
 
 @login_manager.user_loader
@@ -15,6 +18,7 @@ def load_user(user_id):
     return Admin.query.get(int(user_id))
 
 
+<<<<<<< HEAD
 @bp.route("/login", methods=["GET", "POST"], strict_slashes=False)
 def login():
 
@@ -45,6 +49,28 @@ def login():
     logging.info(
         f"Server-generated CSRF token (for rendering): {form.csrf_token.current_token}"
     )
+=======
+@bp.route("/login", methods=("GET", "POST"), strict_slashes=False)
+def login():
+    form = login_form()
+
+    if form.validate_on_submit():
+        try:
+            user = Admin.query.filter_by(email=form.email.data).first()
+            print(user)
+            if check_password_hash(user.pwd, form.pwd.data):
+                login_user(user)
+                session['user_id'] = user.id
+                # TODO
+                return redirect(url_for('asset.asset_view'))
+            else:
+                flash("Invalid Username or password!", "danger")
+        except AttributeError:
+            flash("User not Found!", "danger")
+        except Exception as e:
+            print(e)
+            flash(e, "danger")
+>>>>>>> origin/main
 
     return render_template("login.html", form=form)
 
@@ -53,5 +79,10 @@ def login():
 @login_required
 def logout():
     logout_user()
+<<<<<<< HEAD
     session.pop("user_id")
     return redirect(url_for("auth.login"))
+=======
+    session.pop('user_id')
+    return redirect(url_for('auth.login'))
+>>>>>>> origin/main

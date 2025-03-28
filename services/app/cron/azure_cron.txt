@@ -1,2 +1,0 @@
-TZ=Asia/Singapore
-* * * * * . /etc/environment; cd /home/app/web/ && /opt/conda/envs/chatbot/bin/python -m tasks >> /var/log/cron_sync.log 2>&1
