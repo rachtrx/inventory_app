@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  inventory_app:
+    build: 
+      context: ./services/web
+      dockerfile: Dockerfile.prod
+    command: gunicorn --bind 0.0.0.0:5000 manage:app
+    volumes:
+      - static_volume:/home/app/web/project/static
+      - uploads_volume:/home/app/web/project/uploads
+    expose: 
+      - 5000
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - db
+    container_name: inventory_app
+    networks:
+      - app-network
+
+volumes:
+  postgres_data_prod:
+  static_volume:
+  uploads_volume:
+
+networks:
+  app-network:
+    external: true

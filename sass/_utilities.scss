@@ -1,0 +1,34 @@
+.hidden {
+    display: none !important;
+}
+
+.scroll-window {
+    overflow-y: auto;
+    height: 8rem;
+
+    &--current-device {
+        display: grid;
+        grid-template-columns: 65% 35%;
+    }
+}
+
+.small-font {
+    font-size: $default-font-size;
+}
+
+.unavailable {
+    background-color: rgba(#e74c3c, 0.8);
+}
+
+.available {
+    background-color: rgba(#7ac66d, 0.8);
+}
+
+.hidden-visibility {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+.popstate {
+    padding-bottom: 2rem;
+}

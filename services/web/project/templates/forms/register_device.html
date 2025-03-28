@@ -1,0 +1,118 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetFormController.js') }}"></script>
+{% endblock %} {% block main %}
+
+<div class="register-device" id="register-device-id">
+    <h1 class="heading-1">Register a device</h1>
+    <a href="/asset/forms/onboard" class="btn-text btn-text--onboard">Bulk Upload with Onboard (Not recommended)</a>
+    <div class="register-device__form">
+        <form action="/asset/forms/register_device" class="form form--register-device" method="post">
+            {# SELECT CREATED MODEL #}
+            <div class="form__group--model-name form__group--model-name--register-device">
+                <input type="text" class="form__input form__input--model-name" name="model_name" placeholder="Model Name" autocomplete="off" />
+                <!-- <div class="preview--model-name selected">
+                    <h3 class="preview__value">ASUS P1412</h3>
+                    <h4>Computer</h4>
+                    <button class="btn--close-preview">&times;</button>
+                </div> -->
+                {# DROPDOWN SUGGESTIONS ABSOLUTE POSITIONING#}
+                <div class="form-dropdown form-dropdown--model-name hidden-visibility">
+                    <div class="preview preview--model-name">
+                        <!-- {# LIST OF PREVIEWS #} {# TEST #}
+                        <div class="preview--model-name" data-id="234920">
+                            <h3 class="preview__value">ASUS P1412</h3>
+                            <h4>Computer</h4>
+                        </div>
+                        {# TEST END #} {% for model_name in model_names %}
+                        <div class="preview--model-name" data-id="234920">
+                            <h3 class="preview__value">{{ model_name }}</h3>
+                            <h4>Device Type</h4>
+                        </div>
+                        {% endfor %} -->
+                    </div>
+
+                    {# CREATE DEVICE BUTTON #}
+                    <div class="preview-not-found">
+                        <a class="btn-text btn-text-not-found" href="/asset/forms/register_model">Model not found? Register Model</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form__group--vendor">
+                <select name="vendor" class="form__input form__input--vendor" required>
+                    <option disabled selected hidden>Vendor</option>
+
+                    {% for vendor in vendors %}
+                    <option value="{{ vendor }}">{{ vendor }}</option>
+                    {% endfor %}
+                </select>
+                <div class="vendor-new-btn">
+                    <a class="btn-text btn-text--vendor-new">Vendor not found? Create vendor</a>
+                </div>
+            </div>
+
+            <div class="form__group--vendor-new hidden">
+                <input autocomplete="off" name="new_vendor" class="form__input form__input--vendor-new" placeholder="New Vendor" type="text" autocomplete="off" />
+                <label for="new_vendor" class="form__label form__label--vendor-new">New Vendor</label>
+                <div class="vendor-existing-btn">
+                    <a class="btn-text btn-text--vendor">Select existing vendor</a>
+                </div>
+            </div>
+
+            {# NEW SERIAL NUMBER #}
+            <div class="form__group--serial-number-new">
+                <input name="serial_number" class="form__input form__input--serial-number-new" placeholder="Serial Number" type="text" autocomplete="off" />
+                <label for="serial_number" class="form__label form__label--serial-number-new">New Serial Number</label>
+            </div>
+
+            {# NEW ASSET TAG, SET MAX LENGTH #}
+            <div class="form__group--asset-tag-new form__group--asset-tag-new">
+                <input name="asset_tag" class="form__input form__input--asset-tag-new" placeholder="Asset Tag" type="text" autocomplete="off" />
+                <label for="asset_tag" class="form__label form__label--asset-tag-new">New Asset Tag</label>
+            </div>
+
+            {# value of item #}
+            <div class="form__group--model-value-new">
+                <input name="model_value" class="form__input form__input--model-value-new" placeholder="Value" type="number" autocomplete="off" />
+                <label for="model_value" class="form__label form__label--model-value-new">Value</label>
+            </div>
+
+            {# REMARKS #}
+            <div class="form__group--remarks-new form__group--remarks-new--register-device">
+                <input name="remarks" class="form__input form__input--remarks-new" placeholder="Remarks" type="text" autocomplete="off" />
+                <label for="remarks" class="form__label form__label--remarks-new">Remarks</label>
+            </div>
+
+            {# USE EXCEL #}
+            <div class="form__group--use-excel form__group--use-excel--register-device">
+                <!-- <input name="use_excel" type="number" class="form__input form__input--excel" placeholder="Number of Devices" min="1" autocomplete="off" /> -->
+                <!-- <label for="use_excel" class="form__label form__label--use-excel">Number of Devices</label> -->
+
+                <button class="btn btn--excel" id="register-device-excel-btn">Use Excel</button>
+            </div>
+
+            {# USE NORMAL #}
+            <div class="form__group--use-normal form__group--use-normal--register-device hidden">
+                <button class="btn btn--normal" id="register-device-normal-btn">Use Normal</button>
+            </div>
+
+            {# EXCEL #}
+            <div class="form__group--excel form__group--excel--register-device hidden">
+                <button class="btn btn--file-template">Get Template</button>
+                <input type="file" id="excel-file" class="file__input hidden" accept=".xlsx, .xls"'>
+                <button class="btn btn--file-upload">Upload File</button>
+                <div class="form__file-view hidden">
+                    <span class="form__file--view__file"></span>
+                    <svg class="btn--remove-file">
+                        <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-circle-with-cross"></use>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="form__group--submit form__group--submit--register-device">
+                <button class="btn btn--submit btn--register-device">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

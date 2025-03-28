@@ -1,0 +1,62 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetFormController.js') }}"></script>
+{% endblock %} {% block main %}
+
+<div class="condemned-device" id="condemned-device-id">
+    <h1 class="heading-1">Condemn a device</h1>
+    <div class="condemned-device__form">
+        <form action="/asset/forms/condemned_device" class="form form--condemned-device" , method="post">
+            <!-- {# group for date #}
+            <div class="form__group--event-date-new form__group--event-date-new--condemned-device">
+                <input name="event_date" class="form__input form__input--event-date-new" placeholder="Date" type="date" />
+                <label for="event_date" class="form__label form__label--event-date-new">Date</label>
+            </div> -->
+
+            {# group for choosing asset tag that must exist #}
+            <div class="form__group--asset-tag form__group--asset-tag--condemned-device">
+                <input type="text" class="form__input form__input--asset-tag" name="asset_tag" placeholder="Asset Tag" autocomplete="off" />
+                <div class="form-dropdown form-dropdown--asset-tag hidden-visibility" id="asset_tag_list">
+                    {# CANNOT BE ON LOAN #}
+                    <div class="preview preview--asset-tag"></div>
+                </div>
+            </div>
+
+            {# comments #}
+            <div class="form__group--remarks-new form__group--remarks-new--condemned-device">
+                <input name="remarks" class="form__input form__input--remarks-new" placeholder="Remarks" type="text" autocomplete="off" />
+                <label for="remarks" class="form__label form__label--remarks-new">Remarks</label>
+            </div>
+
+            {# EXCEL #}
+            <div class="form__group--excel form__group--excel--condemned-device hidden">
+                <button class="btn btn--file-template">Get Template</button>
+                <input type="file" id="excel-file" class="file__input hidden" accept=".xlsx, .xls"'>
+                <button class="btn btn--file-upload">Upload File</button>
+                <div class="form__file-view hidden">
+                    <span class="form__file--view__file"></span>
+                    <svg class="btn--remove-file">
+                        <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-circle-with-cross"></use>
+                    </svg>
+                </div>
+            </div>
+
+            {# USE EXCEL #}
+            <div class="form__group--use-excel form__group--use-excel--condemned-device">
+                <!-- <input name="use_excel" type="number" class="form__input form__input--excel" placeholder="Number of Devices" min="1" autocomplete="off" />
+                <label for="use_excel" class="form__label form__label--use-excel">Number of Devices</label> -->
+                <button class="btn btn--excel" id="condemned-device-excel-btn">Use Excel</button>
+            </div>
+
+            {# USE NORMAL #}
+            <div class="form__group--use-normal form__group--use-normal--condemned-device hidden">
+                <button class="btn btn--normal" id="condemned-device-normal-btn">Use Normal</button>
+            </div>
+
+            <div class="form__group--submit form__group--submit--condemned-device">
+                <button class="btn btn--submit btn--condemned-device">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

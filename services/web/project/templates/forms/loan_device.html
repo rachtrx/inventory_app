@@ -1,0 +1,83 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetFormController.js') }}"></script>
+{% endblock %} {% block main %}
+
+<div class="loan-device" id="loan-device-id">
+    <h1 class="heading-1">Loan a device</h1>
+    <div class="loan-device__form">
+        <form class="form form--loan-device" , method="post">
+            {# group for choosing asset tag that must exist #}
+            <div class="form__group--asset-tag form__group--asset-tag--loan-device">
+                <input type="text" class="form__input form__input--asset-tag" name="asset_tag" placeholder="Asset Tag" autocomplete="off" />
+                {# When selected, input value will be the one clicked! #} {# DROPDOWN SUGGESTIONS TODO SET HIDDEN#}
+                <div class="form-dropdown form-dropdown--asset-tag hidden-visibility">
+                    <div class="preview preview--asset-tag">
+                        <!-- {# LIST OF PREVIEWS #}
+
+                        {# TEST #}
+                        <div class="preview--asset-id" data-id="234920">
+                            <h3 class="preview__value">GOS/EQ/2301ADL013</h3>
+                            <h4>ASUS P1412</h4>
+                            <h5>Computer</h5>
+                        </div>
+                        {# TEST END #}
+
+                        {% for device in devices %} need to check if it is on loan already!
+                        <div class="preview--asset-id" data-id="234920">
+                            <h3 class="preview__value">{{ device['asset_tag'] }}</h3>
+                            <h4>Model Name</h4>
+                            <h5>Device Type</h5>
+                        </div>
+                        {% endfor %} -->
+                    </div>
+
+                    {# REGISTER DEVICE BUTTON #}
+                    <div class="preview-not-found">
+                        <a class="btn-text btn-text-not-found" href="/asset/forms/register_device">Asset Tag Not Found? Register device</a>
+                    </div>
+                </div>
+            </div>
+
+            {# group for user name #}
+            <div class="form__group--user-name form__group--user-name--loan-device">
+                <input autocomplete="off" name="user_name" class="form__input form__input--user-name" placeholder="User Name" type="text" autocomplete="off" />
+                <div class="form-dropdown form-dropdown--user-name hidden-visibility">
+                    <div class="preview preview--user-name">
+                        <!-- {# LIST OF PREVIEWS #}
+
+                        {# TEST #}
+                        <div class="preview--user-id" data-id="234920">
+                            <h3 class="preview__value">GOS/EQ/2301ADL013</h3>
+                            <h4>ASUS P1412</h4>
+                        </div>
+                        {# TEST END #}
+                        -->
+                    </div>
+
+                    {# REGISTER USER BUTTON #}
+                    <div class="preview-not-found">
+                        <a class="btn-text btn-text-not-found" href="/asset/forms/create_user">User Not Found? Register user</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- {# group for date #}
+            <div class="form__group--event-date-new form__group--event-date-new--loan-device">
+                <input name="event_date" class="form__input form__input--event-date-new" placeholder="Date" type="date" />
+                <label for="event_date" class="form__label form__label--event-date-new">Date</label>
+            </div> -->
+
+            {# comments #}
+            <div class="form__group--remarks-new form__group--remarks-new--loan-device">
+                <input name="remarks" class="form__input form__input--remarks-new" placeholder="Remarks" type="text" autocomplete="off" />
+                <label for="remarks" class="form__label form__label--remarks-new">Remarks</label>
+            </div>
+
+            <div class="form__group--submit form__group--submit--loan-pdf">
+                <button class="btn btn--submit btn--loan-device">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

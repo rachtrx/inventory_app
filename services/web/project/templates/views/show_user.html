@@ -1,0 +1,77 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetShowController.js') }}"></script>
+{% endblock %} {% block main %}
+
+<div class="popstate">
+    <a class="btn btn--previous" href="/asset/views/users">&larr; Back to users</a>
+</div>
+
+<div class="show-user">
+    <!-- <div class="show-user-overview">
+        <div class="show-user-details">
+            <h1 class="show-user-details__name">Rachmiel Teo Ren Xiang</h1>
+            <h2 class="show-user-details__dept">ICT INTERN</h2>
+        </div>
+
+        <div class="show-user-devices--past">
+            <h2 class="show-user-device-title">Past Devices</h2>
+            <hr />
+            <div class="scroll-window">
+                <a href="${HOMEPAGE_URL}devices/show_device#${device.assetId}" class="btn-text--device">
+                    <h3 class="btn-text--device__asset-tag">GOS/EQ/2301ADL57</h3>
+                    <h5 class="btn-text--device__model-name">iPad</h5>
+                </a>
+                <a href="${HOMEPAGE_URL}devices/show_device#${device.assetId}" class="btn-text--device">
+                    <h3 class="btn-text--device__asset-tag">GOS/EQ/2209ADL37</h3>
+                    <h5 class="btn-text--device__model-name">iPad</h5>
+                </a>
+            </div>
+        </div>
+
+        <div class="show-user-devices--current">
+            <h2 class="show-user-device-title">Current Devices</h2>
+            <hr />
+            <div class="scroll-window">
+                <a href="${HOMEPAGE_URL}devices/show_device#${device.assetId}" class="btn-text--device">
+                    <h3 class="btn-text--device__asset-tag">GOS/EQ/2301ADL57</h3>
+                    <h5 class="btn-text--device__model-name">iPad</h5>
+                    <button class="btn--device-return" dataset="32839">Return Device</button>
+                </a>
+                <a href="${HOMEPAGE_URL}devices/show_device#${device.assetId}" class="btn-text--device">
+                    <h3 class="btn-text--device__asset-tag">GOS/EQ/2209ADL37</h3>
+                    <h5 class="btn-text--device__model-name">Computer</h5>
+                    <button class="btn--device-return" dataset="32839">Return Device</button>
+                </a>
+            </div>
+        </div>
+        <div class="show-user-actions">
+            <button class="btn btn--resign">Resign</button>
+            <button class="btn btn--loan">Loan Device</button>
+        </div>
+    </div>
+
+    <div class="timeline--show-user">
+        <div class="timeline__component">
+            <div class="timeline__date timeline__date--right">15 june 2023</div>
+        </div>
+        <div class="timeline__middle">
+            <div class="timeline__point"></div>
+        </div>
+        <div class="timeline__component timeline__component--bg">
+            <h3 class="timeline__title">Laptop returned on 22 July 2023</h3>
+            <p class="timeline__paragraph">Laptop was in good condition</p>
+        </div>
+
+        <div class="timeline__component timeline__component--bg">
+            <h3 class="timeline__title">Laptop returned on 22 July 2023</h3>
+            <p class="timeline__paragraph">Laptop was in good condition</p>
+        </div>
+        <div class="timeline__middle">
+            <div class="timeline__point timeline__point--bottom"></div>
+        </div>
+        <div class="timeline__component">
+            <div class="timeline__date">15 june 2023</div>
+        </div>
+    </div>-->
+</div>
+{% endblock %}

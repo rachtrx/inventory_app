@@ -1,0 +1,55 @@
+{% extends "index.html" %} {% block main %}
+<div class="login__form">
+    <form action="{{ request.path }}" method="POST" class="form form--login">
+        {{ form.csrf_token }} {% with messages = get_flashed_messages(with_categories=true) %}
+        <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+        {% if messages %} {% for category, message in messages %}
+        <div class="alert alert--{{category}}" role="alert">
+            <p>{{ message }}</p>
+            <svg class="btn-close-alert">
+                <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-circle-with-cross"></use>
+            </svg>
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+
+        <div class="text-center">
+            <h1 class="heading-1">Login</h1>
+        </div>
+
+        <div class="form__group--email form__group--email--login">
+            {{ form.email(class_="form__input form__input--email",placeholder="Email", autocomplete="off")}} {% for error in form.email.errors %}
+            <div class="alert alert--warning" role="alert">
+                <p>{{ error }}</p>
+                <svg class="btn-close-alert">
+                    <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-circle-with-cross"></use>
+                </svg>
+            </div>
+            {% endfor%}
+        </div>
+
+        <div class="form__group--pwd form__group--pwd--login">
+            {{ form.pwd(class_="form__input form__input--pwd",placeholder="Password", autocomplete="off")}} {% for error in form.pwd.errors %}
+            <div class="alert alert--warning" role="alert">
+                <p>{{ error }}</p>
+                <svg class="btn-close-alert">
+                    <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-circle-with-cross"></use>
+                </svg>
+            </div>
+            {% endfor%}
+        </div>
+
+        <div class="form__group--submit form__group--submit--login">
+            <button type="submit" class="btn btn--submit btn--login">Login</button>
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener("click", (e) => {
+            if (e.target.closest(".btn-close-alert")) {
+                const alertEl = e.target.closest(".btn-close-alert").parentElement;
+                alertEl.remove();
+            }
+        });
+    </script>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+<<<<<<< HEAD
+# Virtual environment
+.vscode/
+venv/
+.venv/
+env/
+/flask_app_azure
+.parcel-cache
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore npm lock files
+package-lock.json
+yarn.lock
+
+# Ignore specific files generated during development or build
+.DS_Store
+.env.dev
+.env.prod
+.env.prod.db
+
+# Ignore dist files, and uploads folder
+# services/web/project/static/js/dist
+services/web/project/uploads
+services/web/project/inventory.db
+
+notes.txt
+=======
+**/*.ipynb
+**/*.log
+**/*.env
+**/*.env.db
+**/*.env.dev
+**/*.sql
+
+excel_files/
+token.txt
+__pycache__/
+>>>>>>> origin/main

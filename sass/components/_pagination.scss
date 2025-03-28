@@ -1,0 +1,45 @@
+.btn--inline {
+    color: $color-primary-2;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border: none;
+    background-color: $color-primary-1;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10rem;
+    cursor: pointer;
+  
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+  
+    span {
+      margin: 0 0.4rem;
+    }
+  
+    &:hover {
+      color: $color-white;
+      background-color: $color-primary-2;
+    }
+  
+    &:focus {
+      outline: none;
+    }
+}
+
+.pagination {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: space-around;
+}
+
+.pagination__btn {
+
+  &--prev {
+    grid-column: 1 / 2;
+  }
+
+  &--next {
+    grid-column: 2 / 3;
+  }
+}

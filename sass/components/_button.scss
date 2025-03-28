@@ -1,0 +1,400 @@
+.btn {
+    // This is an anchor element. <button> element is not like anchor element, does not have link and visited pseudo classes, so we use &
+    &,
+    &:link,
+    &:visited {
+        background-color: $color-primary-2;
+        align-self: center;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all 0.2s;
+        font-size: $default-font-size;
+
+        // change for the <button> element. remove the default button border
+        border: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    }
+
+    &:active,
+    // <button> also has a border when you focus (same as inputs) so we make it look like when we click it
+    &:focus {
+        // remove outline for <button>
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+
+    &--excel, &--normal {
+        background-color: rgba($color-data-pink, 0.8);
+        border-radius: 10px;
+    }
+
+    &--resign, &--loan, &--condemn {
+        background-color: $color-data-yellow;
+    }
+
+    &--edit, &--save {
+        font-size: $small-font-size;
+        background-color: $color-data-yellow;
+        padding: .8rem 1.5rem;
+    }
+
+    &--edit__location, &--save__location, &--edit__value, &--save__value {
+        grid-row: 1 / 2;
+        grid-column: 3 / 4;
+        background-color: $color-data-blue;
+        padding: .3rem 1rem;
+    }
+
+
+    &--edit__timeline {
+        justify-self: start;
+        margin-top: 3rem;
+    }
+
+    &--save__timeline {
+        justify-self: end;
+        margin-top: 3rem;
+    }
+
+    &--file-download {
+        font-size: $small-font-size;
+        background-color: $color-data-pink;
+        padding: .8rem 1.5rem;
+        justify-self: center;
+        margin-top: 3rem;
+    }
+
+    &--file-template, &--file-upload, &--file-download--pdf {
+        font-size: $default-font-size;
+        padding: 0.8rem 1.5rem;
+        justify-self: center;
+        position: relative;
+        font-family: sans-serif;
+        border-radius: 6px;
+        background-color: $color-data-blue;
+
+        /* Style the file input to be visually hidden */
+        input[type="file"] {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        span {
+            font-size: inherit;
+            font-family: sans-serif;
+        }
+    }
+
+    &--export-excel--history, &--export-excel--devices, &--export-excel--users {
+        justify-self: end;
+    }
+
+    &--previous, &--continue, &--resubmit {
+        color: $color-white;
+    }
+
+    &--continue {
+        background-color: $color-data-pink !important;
+    }
+
+    &--resubmit {
+        background-color: $color-data-blue !important;
+    }
+}
+
+.btn-filter {
+
+    &,
+    &:link,
+    &:visited {
+        background-color: $color-primary-2;
+        align-self: center;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 0.7rem 2rem;
+        display: inline-block;
+        border-radius: 10rem;
+        font-size: $default-font-size;
+        color: $color-white;
+
+        // change for the <button> element. remove the default button border
+        border: none;
+        cursor: pointer;
+    }
+
+    &:active, &:focus {
+        box-shadow: none;
+    }
+    
+    // devices
+    &--submit {
+        justify-self: center;
+        background-color: $color-data-yellow;
+        color: $color-black;
+        margin-top: 2rem;
+    }
+
+    &--reset {
+        justify-self: center;
+        background-color: $color-data-blue;
+        margin-top: 2rem;
+        color: $color-black;
+    }
+
+    // users
+    &--search {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+
+    &--clear-filters {
+        
+    }
+
+    &--bookmarks {
+        background: linear-gradient(to bottom right, rgba($color-data-pink, 0.5), rgba($color-data-pink, 1));
+        padding: 0.7rem 2rem;
+        display: flex;
+        align-items: center;
+
+        &-unselected {
+            opacity: 0.5;
+        }
+
+        svg {
+            height: 1.8rem;
+            width: 1.8rem;
+            fill: $color-white;
+            margin-right: 0.3rem;
+        }
+    }
+}
+
+.btn-text {
+    &, 
+    &:link,
+    &:visited {
+        font-size: $small-font-size;
+        font-weight: 600;
+        color: $color-primary-2;
+        display: inline-block;
+        align-self: center;
+        text-decoration: none;
+        // create our own decoration by having a border --> this way we can set a padding between the text and the line that is created by border-bottom
+        border-bottom: 1px solid $color-primary-2;
+        padding: 3px;
+        transition: all 0.2s;
+    }
+
+    &:hover {
+        background-color: $color-primary-2;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+        transform: translateY(-2px);
+        cursor: pointer;
+    }
+
+    &:active {
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+        transform: translateY(0);
+    }
+
+    &--register-device {
+
+    }
+
+    &--device, &--user {
+
+        &, &:link, &:visited {
+            color: $color-white;
+            text-decoration: none;
+            transition: all 0.2s;
+            padding: 0.5rem;
+            border-radius: 2px;
+        }
+
+        &:hover {
+            color: $color-primary-2;
+            background-color: $color-white;
+        }
+    }
+
+    &--device {
+        display: flex;
+        flex-direction: column;
+
+        &__asset-tag {
+            grid-row: 1 / 2;
+            grid-column: 1 / 3;
+            font-size: $medium-font-size;
+        }
+
+        &__model-name {
+
+        }
+    }
+
+    &--user {
+        margin-left: -.5rem;
+    }
+
+    &--vendor-new, &--device-type-new {
+        margin-top: 1.3rem;
+    }
+
+    &-not-found {
+
+        &, &:link, &:visited {
+            font-size: $small-font-size;
+        }
+    }
+
+    &--onboard {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+.btn-text--user, .btn-text--device {
+    &:link,
+    &:visited {
+        // margin: 0 auto;
+        color: $color-white;
+        text-decoration: none;
+        padding: 0.5rem;
+        border-radius: 2px;
+        transition: all 0.2s;
+        align-self: flex-start; // i think the flex container is alr align left but it got overriden
+
+        &:hover {
+            color: $color-primary-2;
+            background-color: $color-white;
+            box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+
+        &:active {
+            box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+            transform: translateY(0);
+        }
+    }
+
+}
+
+.btn-text--return {
+    &:link,
+    &:visited {
+        background-color: rgba($color-data-yellow,0.8);
+        color: $color-black;
+        font-size: $small-font-size;
+        padding: 0.5rem 1rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        align-self: stretch;
+        z-index: 100;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    &:hover {
+        background-color: $color-data-yellow;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        overflow: visible;
+    }
+
+    // TODO
+    &:hover ~ & {
+        background-color: $color-white;
+    }
+}
+
+.btn--close {
+    
+    &-modal {
+        font-family: inherit;
+        color: inherit;
+        position: absolute;
+        top: 0.5rem;
+        right: 1.6rem;
+        font-size: 3.5rem;
+        cursor: pointer;
+        border: none;
+        background: none;
+        z-index: 1000;
+    }
+}
+
+[class^='btn--close-preview'] {
+    position: absolute;
+    cursor: pointer;
+    height: 2.5rem;
+    width: 2.5rem;
+    top: -0.6rem;
+    right: -0.6rem;
+    fill: $color-red-1;
+}
+
+.btn--round {
+    top: 1.3rem;
+    right: 1rem;
+    background: linear-gradient(to bottom right, rgba($color-data-pink, 0.5), rgba($color-data-pink, 1));
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    height: 4.5rem;
+    width: 4.5rem;
+    // margin-left: auto;
+    transition: all 0.2s;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    &:hover {
+      transform: scale(1.07);
+    }
+  
+    &:focus {
+      outline: none;
+    }
+  
+    svg {
+      height: 2.5rem;
+      width: 2.5rem;
+      fill: $color-white;
+    }
+
+    &--absolute {
+        position: absolute;
+        cursor: default;
+
+        &:hover {
+            transform: none;
+          }
+    }
+  }
+
+.btn--remove-file {
+    background-color: $color-grey-light-2;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+}

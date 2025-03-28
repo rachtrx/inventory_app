@@ -1,0 +1,6 @@
+SECRET_KEY="61sw1qq7nwvLJPgNqyT7UlohBTK4MlN6"
+FLASK_ENV=development
+
+APP_EMAIL=test@test.com
+APP_PASSWORD=1234
+APP_USERNAME=test

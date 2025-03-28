@@ -1,0 +1,69 @@
+.timeline--show-user, .timeline--show-device {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 3px 1fr;
+}
+
+.timeline__component {
+    margin: 0 20px 20px 20px;
+    width: 35vw;
+
+    &--bg {
+        padding: 1.5rem;
+        background: rgba($color-data-blue, 0.2);
+        box-shadow: 0 0 5px rgba($color-black, 0.2);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.timeline__date--right {
+    text-align: right;
+}
+
+.timeline__middle {
+    position: relative;
+    background: $color-data-blue;
+
+    &:nth-last-child(2) {
+        position: relative;
+        visibility: hidden;
+    }
+}
+
+.timeline__point {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 15px;
+    background: $color-data-blue;
+    border-radius: 50%;
+    visibility: visible;
+}
+
+.timeline__title {
+    margin: 0;
+    font-size: $default-font-size;
+    font-weight: bold;
+}
+
+.timeline__paragraph {
+    line-height: 1.5;
+    font-size: $onboard-font-size;
+    padding: 0.5rem;
+    word-wrap: break-word;
+}
+
+.timeline__editable {
+    background-color: $color-white;
+
+}
+
+.timeline-edit-component {
+    display: grid;
+    grid-template-columns: min-content max-content max-content;
+    justify-content: space-between;
+}

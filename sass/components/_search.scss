@@ -1,0 +1,59 @@
+.search {
+
+    // this searchbox (a flex item itself) can become a flex container to align the input and the button
+    display: flex;
+    justify-content: center;
+
+    &__input {
+        // inputs do not automatically inherit font family and size of the global document
+        font-family: inherit;
+        font-size: inherit;
+        color: $color-primary-2;
+        background-color: rgba($color-primary-2, 0.1);
+        border: none;
+        padding: 0.7rem 2rem;
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px;
+        width: 90%;
+        transition: all 0.2s;
+        // move the input to overlap with the button
+
+        // expand when we click on the input
+        &:focus {
+            outline: none;
+            background-color: rgba($color-primary-2, 0.4);
+        }
+
+        &::-webkit-input-placeholder {
+            font-weight: 600;
+            color: $color-primary-2;
+        }
+    }
+
+    &__input:focus + &__button {
+        background-color: rgba($color-primary-2, 0.1);
+    }
+
+    &__button {
+        border: none;
+        // we want the button to be basically on top of the input so we give it the same colour
+        background-color: rgba($color-primary-2, 0.1);
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            // move the button down a bit when we click
+            transform: translateY(2px);
+        }
+    }
+
+    &__icon {
+        height: 2rem;
+        width: 2rem;
+        // FILL PROPERTY will change the SVG color
+        fill: $color-grey-dark-3;
+    }
+}

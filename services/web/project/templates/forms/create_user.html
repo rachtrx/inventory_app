@@ -1,0 +1,76 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetFormController.js') }}"></script>
+{% endblock %} {% block main %}
+
+<div class="create-user" id="create-user-id">
+    <h1 class="heading-1">Create a user</h1>
+    <div class="create-user__form">
+        <form class="form form--create-user" , method="post">
+            {# group for existing dept #}
+            <div class="form__group--dept">
+                <select name="dept" class="form__input form__input--dept" required>
+                    <option disabled selected hidden>Department</option>
+                    <!-- <option>Human Resources</option> -->
+                    {% for dept_name in dept_names %}>
+                    <option value="{{ dept_name }}">{{ dept_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="dept" class="form__label form__label--dept">Device Type</label>
+                <div class="dept-new-btn">
+                    <a class="btn-text btn-text--dept-new">Department not found? Create New Department</a>
+                </div>
+            </div>
+
+            {# group for new dept #}
+            <div class="form__group--dept-new hidden">
+                <input autocomplete="off" name="new_dept" class="form__input form__input--dept-new" placeholder="New Department" type="text" autocomplete="off" />
+                <label for="new_dept" class="form__label form__label--dept-new">New Department</label>
+                <div class="dept-existing-btn">
+                    <a class="btn-text btn-text--dept">Create with existing department</a>
+                </div>
+            </div>
+
+            {# group for name #}
+            <div class="form__group--user-name-new">
+                <input name="user_name" class="form__input form__input--user-name-new" placeholder="Name" type="name" autocomplete="off" />
+                <label for="user_name" class="form__label form__label--user-name-new">Name</label>
+            </div>
+
+            {# USE EXCEL #}
+            <div class="form__group--use-excel form__group--use-excel--create-user">
+                <!-- <input name="use_excel" type="number" class="form__input form__input--excel" placeholder="Number of Devices" id="register-device-devices" min="1" autocomplete="off" />
+                <label for="use_excel" class="form__label form__label--use-excel">Number of Devices</label> -->
+                <button class="btn btn--excel" id="create-user-excel-btn">Use Excel</button>
+            </div>
+
+            {# USE NORMAL #}
+            <div class="form__group--use-normal form__group--use-normal--create-user hidden">
+                <button class="btn btn--normal" id="create-user-normal-btn">Use Normal</button>
+            </div>
+
+            <div class="form__group--remarks-new form__group--remarks-new--create-user">
+                <input name="remarks" class="form__input form__input--remarks-new" placeholder="Remarks" type="text" autocomplete="off" />
+                <label for="remarks" class="form__label form__label--remarks-new">Remarks</label>
+            </div>
+
+            {# EXCEL #}
+            <div class="form__group--excel form__group--excel--create-user hidden">
+                <button class="btn btn--file-template">Get Template</button>
+                <input type="file" id="excel-file" class="file__input hidden" accept=".xlsx, .xls"'>
+                <button class="btn btn--file-upload">Upload File</button>
+                <div class="form__file-view hidden">
+                    <span class="form__file--view__file"></span>
+                    <svg class="btn--remove-file">
+                        <use xlink:href="{{ url_for('static', filename='sprite.svg') }}#icon-circle-with-cross"></use>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="form__group--submit form__group--submit--create-user">
+                <button class="btn btn--submit btn--create-user">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends "index.html" %} {% block scripts %}
+<script defer src="{{ url_for('static', filename='js/dist/assetShowController.js') }}"></script>
+{% endblock %} {% block main %}
+
+<div class="devices">
+    <div class="devices-header-container">
+        <h1 class="heading-1">Devices</h1>
+        <button class="btn btn--export-excel--devices">Export to Excel</button>
+    </div>
+
+    <form class="devices-filter">
+        <div class="filter__group--device-type">
+            <h5 class="filter-header filter-header--device-type">Device Type</h5>
+            <select name="deviceType" class="form__input form__input--device-type">
+                <option selected>All</option>
+
+                {% for device_type in device_types %}
+                <option value="{{ device_type }}">{{ device_type }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="filter__group--model-name">
+            <h5 class="filter-header filter-header--model-name">Model Name</h5>
+            <input type="text" class="form__input form__input--model-name" name="modelName" placeholder="All" autocomplete="off" />
+            {# DROPDOWN SUGGESTIONS ABSOLUTE POSITIONING#}
+            <div class="form-dropdown form-dropdown--model-name filter-dropdown hidden-visibility">
+                <div class="preview preview--model-name"></div>
+            </div>
+        </div>
+
+        <div class="filter__group--vendor">
+            <h5 class="filter-header filter-header--vendor">Vendor</h5>
+            <select name="vendorName" class="form__input form__input--vendor" required>
+                <option selected>All</option>
+
+                {% for vendor in vendors %}
+                <option value="{{ vendor }}">{{ vendor }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="filter__group--status">
+            <h5 class="filter-header filter-header--status">Status</h5>
+            <select name="status" class="form__input form__input--status" required>
+                <option selected>All</option>
+                <option value="available">Available</option>
+                <option value="loaned">On Loan</option>
+            </select>
+        </div>
+
+        <div class="filter__group--location">
+            <h5 class="filter-header filter-header--location">Location</h5>
+            <select name="location" class="form__input form__input--location" required>
+                <option selected>All</option>
+
+                {% for location in locations %}
+                <option value="{{ location }}">{{ location }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="filter__group--age">
+            <h5 class="filter-header filter-header--age">Device Age</h5>
+            <select name="deviceAge" class="form__input form__input--age" required>
+                <option selected>All</option>
+
+                {% for age in ages %}
+                <option value="{{ age }}">{{ age }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="filter__group--search">
+            <h5 class="filter-header filter-header--search">Serial Number / Asset Tag</h5>
+            <input type="text" name="id" class="form__input form__input--search" autocomplete="off" placeholder="All" />
+        </div>
+
+        <div class="filter__group--btns filter__group--btns--devices">
+            <button type="reset" class="btn btn-filter btn-filter--reset btn-filter--reset--devices">Reset</button>
+            <button type="submit" class="btn btn-filter btn-filter--submit btn-filter--submit--devices">Search</button>
+        </div>
+    </form>
+
+    <div class="devices-filter-options">
+        <button class="btn-filter btn-filter--bookmarks"></button>
+        <h5 class="devices-filter__count">100</h5>
+    </div>
+
+    <div class="devices-grid">
+        <!-- <div class="card--devices">
+            <a class="card--devices__details" data-device-id="">
+                <h2 class="card--devices__details--asset-tag">GOS/EQ/2208ADL070</h2>
+                <h5 class="card--devices__details--serial-number">KF48084JFE</h5>
+                <h5 class="card--devices__details--model-name">ASUS A1412</h5>
+            </a>
+            <div class="card--devices__status">
+                <h3 class="card--devices__status-header">Status</h3>
+                <span class="card--devices__status--status">On Loan</span>
+                <h4 class="card--devices__status-header--user">User</h4>
+                <a class="btn-text btn-text--user">
+                    <span class="card--devices__status--user">Rach</span>
+                </a>
+            </div>
+        </div> -->
+    </div>
+    <div class="pagination">
+        <!-- <button class="btn--inline pagination__btn--prev">
+          <svg class="search__icon">
+            <use href="src/img/icons.svg#icon-arrow-left"></use>
+          </svg>
+          <span>Page 1</span>
+        </button>
+        <button class="btn--inline pagination__btn--next">
+          <span>Page 3</span>
+          <svg class="search__icon">
+            <use href="src/img/icons.svg#icon-arrow-right"></use>
+          </svg>
+        </button> -->
+    </div>
+</div>
+{% endblock %}
