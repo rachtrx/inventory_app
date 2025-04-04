@@ -1,11 +1,7 @@
 version: '3.8'
 
 services:
-<<<<<<< HEAD
-  inventory_app:
-=======
   web:
->>>>>>> origin/main
     build: 
       context: ./services/web
       dockerfile: Dockerfile.prod
@@ -19,11 +15,6 @@ services:
       - ./.env.prod
     depends_on:
       - db
-<<<<<<< HEAD
-    container_name: inventory_app
-    networks:
-      - app-network
-=======
   db:
     image: postgres:14
     volumes:
@@ -43,17 +34,8 @@ services:
       default:
         aliases: 
           - inventory_proxy
->>>>>>> origin/main
 
 volumes:
   postgres_data_prod:
   static_volume:
-<<<<<<< HEAD
   uploads_volume:
-
-networks:
-  app-network:
-    external: true
-=======
-  uploads_volume:
->>>>>>> origin/main
